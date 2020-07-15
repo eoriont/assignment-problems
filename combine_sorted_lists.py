@@ -1,3 +1,4 @@
+# Merge lists
 def combine_sorted_lists(arr1, arr2):
     result = []
     i, j = 0, 0
@@ -13,3 +14,23 @@ def combine_sorted_lists(arr1, arr2):
     result += arr1[i:]
     result += arr2[j:]
     return result
+
+# Just call it merge sort...
+
+
+def divide_and_conquer_sort(x):
+    l = len(x)
+    if l == 2:
+        if x[0] < x[1]:
+            return x
+        else:
+            return x[::-1]
+    elif l == 1:
+        return x
+    x1 = divide_and_conquer_sort(x[:l//2])
+    x2 = divide_and_conquer_sort(x[l//2:])
+    return combine_sorted_lists(x1, x2)
+
+
+print("Answer:", divide_and_conquer_sort(
+    [9, 2, 45, 6, 3, 2, 6, 4, 2, 6, 1, 0, 98, -1]))
