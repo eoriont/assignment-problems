@@ -30,7 +30,3 @@ def divide_and_conquer_sort(x):
     x1 = divide_and_conquer_sort(x[:l//2])
     x2 = divide_and_conquer_sort(x[l//2:])
     return combine_sorted_lists(x1, x2)
-
-
-print("Answer:", divide_and_conquer_sort(
-    [9, 2, 45, 6, 3, 2, 6, 4, 2, 6, 1, 0, 98, -1]))
