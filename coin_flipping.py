@@ -20,7 +20,9 @@ def monte_carlo_probability(num_heads, num_flips):
     return match_flips / total_trials
 
 
+print("Normal Probability Using Combination")
 print(probability(5, 8))
+print("Monte Carlo Probability Trials")
 print(monte_carlo_probability(5, 8))
 print(monte_carlo_probability(5, 8))
 print(monte_carlo_probability(5, 8))
