@@ -19,12 +19,19 @@ def monte_carlo_trials(num_flips, total_trials):
             trials[heads] += 1
         else:
             trials[heads] = 1
-    return {x: y/total_trials for x, y in trials.items()}
+    result = {x: y/total_trials for x, y in trials.items()}
+    result = dict_to_list(result, num_flips)
+    return result
 
 
 def monte_carlo_probability(num_heads, num_flips):
-    match_flips = monte_carlo_trials(num_flips, 1000)[num_heads]
-    return match_flips
+    return monte_carlo_trials(num_flips, 1000)[num_heads]
+
+
+def dict_to_list(d, length):
+    default_dict = {x: 0 for x in range(length+1)}
+    default_dict.update(d)
+    return list(zip(*sorted(default_dict.items(), key=lambda x: x[0])))[1]
 
 
 def factorial(num):
@@ -33,16 +40,16 @@ def factorial(num):
 
 def plot_probabilities():
     # True Probabilities
-    probabilities = [{x: probability(x, 10) for x in range(11)}]
+    probabilities = [[probability(x, 10) for x in range(11)]]
+
     # Monte Carlo Probabilities
-    probabilities += [dict(sorted(monte_carlo_trials(10, 1000).items()))
-                      for _ in range(5)]
-    default_dict = {x: 0 for x in range(11)}
+    probabilities += [monte_carlo_trials(10, 1000) for _ in range(5)]
+
+    # Graph them
     for i, probs in enumerate(probabilities):
-        x_vals, y_vals = zip(
-            *dict(list(default_dict.items()) + list(probs.items())).items())
+        x_vals = [x for x in range(11)]
         line_width = 2.5 if i == 0 else 0.75
-        plt.plot(x_vals, y_vals, linewidth=line_width)
+        plt.plot(x_vals, probs, linewidth=line_width)
 
     plt.legend(["True", "MC 1", "MC 2"])
     plt.xlabel("Number of Heads")
@@ -51,7 +58,7 @@ def plot_probabilities():
     plt.show()
 
 
-plot_probabilities()
+# plot_probabilities()
 # print("Normal Probability Using Combination")
 # print(probability(5, 8))
 # print("Monte Carlo Probability Trials")
