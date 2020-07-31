@@ -38,16 +38,10 @@ def factorial(num):
     return 1 if num in [0, 1] else factorial(num-1) * num
 
 
-def plot_probabilities():
-    # True Probabilities
-    probabilities = [[probability(x, 10) for x in range(11)]]
-
-    # Monte Carlo Probabilities
-    probabilities += [monte_carlo_trials(10, 1000) for _ in range(5)]
-
+def plot_probabilities(probabilities):
     # Graph them
+    x_vals = [x for x in range(len(probabilities[0]))]
     for i, probs in enumerate(probabilities):
-        x_vals = [x for x in range(11)]
         line_width = 2.5 if i == 0 else 0.75
         plt.plot(x_vals, probs, linewidth=line_width)
 
@@ -58,10 +52,11 @@ def plot_probabilities():
     plt.show()
 
 
-# plot_probabilities()
-# print("Normal Probability Using Combination")
-# print(probability(5, 8))
-# print("Monte Carlo Probability Trials")
-# print(monte_carlo_probability(5, 8))
-# print(monte_carlo_probability(5, 8))
-# print(monte_carlo_probability(5, 8))
+if __name__ == "__main__":
+    # True Probabilities
+    probabilities = [[probability(x, 10) for x in range(11)]]
+
+    # Monte Carlo Probabilities
+    probabilities += [monte_carlo_trials(10, 1000) for _ in range(5)]
+    print(probabilities)
+    plot_probabilities(probabilities)
