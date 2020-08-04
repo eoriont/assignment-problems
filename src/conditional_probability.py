@@ -10,13 +10,15 @@ for name, trials in flips.items():
     trials = trials.split(" ")
     # List of the 4 probabilities we had to calculate
     probabilities = [0, 0, 0, 0]
+    trials_to_consider = [0, 0]
     for trial in trials:
         for i in range(len(trial)-1):
             two_flips = trial[i:i+2]
             flips = ['HH', 'HT', 'TH', 'TT']
             probabilities[flips.index(two_flips)] += 1
-    trials_to_consider = (len(trials[0])-1) * len(trials)
-    probs[name] = [p / trials_to_consider for p in probabilities]
+            trials_to_consider[flips.index(two_flips) // 2] += 1
+    probs[name] = [p / trials_to_consider[i//2]
+                   for i, p in enumerate(probabilities)]
 
 for name, trial in probs.items():
     print(f"{name}'s probabilities:")
