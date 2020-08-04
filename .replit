@@ -1,2 +1,2 @@
 language = "python3"
-run = "python coin_flipping.py"
+run = "python src/approximations_of_randomness.py"

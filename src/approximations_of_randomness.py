@@ -33,6 +33,8 @@ def main():
     for name, probs in probs.items():
         div = kl_divergence(probs, true_probability)
         print(name, ":", div)
+	
+    print("According to the KL divergence, Justin's coin flipping was the best approximation of true randomness because it was the closest to the true probability.")
 
 
 if __name__ == "__main__":
