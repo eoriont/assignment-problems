@@ -35,7 +35,7 @@ def dict_to_list(d, length):
 
 
 def factorial(num):
-    return 1 if num in [0, 1] else factorial(num-1) * num
+    return 1 if num == 0 else factorial(num-1) * num
 
 
 def plot_probabilities(probabilities):
