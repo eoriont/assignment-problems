@@ -21,9 +21,7 @@ def prob_distribution(num_flips, bias=0.5):
 def probability(num_heads, num_flips, bias=0.5):
     outcomes_perm = factorial(
         num_flips) / (factorial(num_flips - num_heads) * factorial(num_heads))
-    return (outcomes_perm / 2**num_flips)
-# def probability(num_heads, num_flips, bias=0.5):
-#     return bias**num_heads * (1-bias)**(num_flips-num_heads)
+    return outcomes_perm * bias**num_heads * (1-bias)**(num_flips-num_heads)
 
 
 def factorial(num):
@@ -51,18 +49,23 @@ def factorial(num):
 
 # 1
 dist = prob_distribution(4)
+# [(.5)^4, 4*.5(.5)^3, 6*(.5)^2(.5)^2, 4(.5)^3*.5, (.5)^4]
 print("Probability distribution for x:", dist)
 
 # 2
 # Intuitively, the expected value of x is 2 because the bias is .5, so half of the flips will be heads.
 
 # 3
+# Calculate the expected val
+# 0*0.0625 + 1*0.25 + 2*.375 + 3*.25 + 4*0.0625
 print("Expected value of x:", expected_val(dist))
 
 # 4
+# (0.0625 - 2)^2 + (.25-2)^2 + (.375-2)^2 + (.25-2)^2 + (.0625-2)^2
 print("Variance of x:", variance(dist))
 
 # 5
+# Sqrt(var(x))
 print("Standard deviation of x:", stdev(dist))
 
 # Part B
@@ -81,3 +84,6 @@ print("Standard deviation of x:", stdev(dist))
 
 # Variance:
 # ((1-λ)^4-4λ)^2 + (4λ(1-λ)^3-4λ)^2 + (6λ^2(1-λ)^2-4λ)^2 + (4λ^3(1-λ)-4λ)^2 + (λ^4-4λ)^2
+
+# Standard Deviation (square root of the variance):
+# sqrt(((1-λ)^4-4λ)^2 + (4λ(1-λ)^3-4λ)^2 + (6λ^2(1-λ)^2-4λ)^2 + (4λ^3(1-λ)-4λ)^2 + (λ^4-4λ)^2)
