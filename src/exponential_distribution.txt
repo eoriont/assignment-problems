@@ -1,0 +1,99 @@
+PART A:
+--------
+1:
+Int(2 e ^ (-2 x)) from x = 0 to x = infinity
++ Int(0) from x = -infinity to x = 0
+
+= -e^(-2x) from x = 0 to x = infinity
++ 0
+
+= lim x->infinity (-e^(-2*0) - -e^(-2x))
+
+= 1 + lim x->infinity (1/(e^2x)) = 1
+---------
+2:
+Int(2 e^(-2x)) from x=0 to x=1
+
+= -e^(-2x) from x=0 to x=1
+
+= -e^(-2) - -e^0
+
+= 1 - 1/e^2
+--------
+3:
+Int(0) from x=-infinity to x=0 + Int(2e^(-2x)) from x=0 to x=X
+
+= 0 + -e^(-2x) from x=0 to x=X
+
+= -e^(-2X) - -e^(-2*0)
+
+= 1 - 1/e^2X
+---------
+4:
+Int(x*0) from -infinity to 0 + Int(x*2e^(-2x)) from x=0 to x=infinity
+
+= 0 + e^(-2x) * (x + 1/2) from x=0 to x=infinity
+
+= 0 + 1/2 = 1/2
+---------
+5:
+Var(x) = E((X-.5)^2)
+
+= Int(x*0) from -infinity to 0 + Int((x-.5)^2 * 2e^(-2x)) from x=0 to x=infinity
+
+= 0 + -e^(-2x) * ((x-1/2)^2 + (x-1/2) + 1/2) from x=0 to x=infinity
+
+= lim x->infinity (-e^(-2*x)*((x-1/2)^2 + (x-1/2) + 1/2)) - -((-1/2)^2 + (-1/2) + 1/2)
+
+= 0 + 1/4 = 1/4
+
+
+========
+Part B:
+--------
+1:
+Int(λ e ^ (-λ x)) from x = 0 to x = infinity
++ Int(0) from x = -infinity to x = 0
+
+= -e^(-λx) from x = 0 to x = infinity
++ 0
+
+= lim x->infinity (-e^(-λ*0) - -e^(-λx))
+
+= 1 + lim x->infinity (1/(e^λx)) = 1
+---------
+2:
+Int(λ e^(-λx)) from x=0 to x=1
+
+= -e^(-λx) from x=0 to x=1
+
+= -e^(-λ) - -e^0
+
+= 1 - 1/e^λ
+--------
+3:
+Int(0) from x=-infinity to x=0 + Int(λe^(-λx)) from x=0 to x=X
+
+= 0 + -e^(-λx) from x=0 to x=X
+
+= -e^(-λX) - -e^(-λ*0)
+
+= 1 - 1/e^λX
+---------
+4:
+Int(x*0) from -infinity to 0 + Int(x*λe^(-λx)) from x=0 to x=infinity
+
+= 0 + e^(-λx) * (x + 1/λ) from x=0 to x=infinity
+
+= 0 + 1/λ = 1/λ
+---------
+5:
+Var(x) = E((X-1/λ)^2)
+
+= Int(x*0) from -infinity to 0 + Int((x-1/λ)^2 * λe^(-λx)) from x=0 to x=infinity
+
+= 0 + -e^(-λx) * (1/λ(x-1/λ)^2 + 2/λ(x-1/λ) + 2/λ^2) from x=0 to x=infinity
+
+= lim x->infinity (-e^(-λx)*(1/λ(x-1/λ)^2 + 2/λ(x-1/λ) + 2/λ^2))) - -(1/λ(-1/λ)^2 + 2/λ(-1/λ) + 2/λ^2)
+
+= 0 + (1/λ^3 + 4/λ^2) = 1/λ^3 + 4/λ^2
