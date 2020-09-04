@@ -5,7 +5,7 @@ def expected_val(x):
 
 def variance(x):
     expected = expected_val(x)
-    return sum((i - expected)**2 for i in x)
+    return sum(y*(i - expected)**2 for i, y in enumerate(x))
 
 
 def stdev(x):
@@ -61,11 +61,11 @@ print("Probability distribution for x:", dist)
 print("Expected value of x:", expected_val(dist))
 
 # 4
-# (0.0625 - 2)^2 + (.25-2)^2 + (.375-2)^2 + (.25-2)^2 + (.0625-2)^2
+# 0.0625 * (0 - 2)^2 + 0.25 * (1-2)^2 + 0.375 * (2-2)^2 + 0.25 * (3-2)^2 + 0.0625 * (4-2)^2 = 1
 print("Variance of x:", variance(dist))
 
 # 5
-# Sqrt(var(x))
+# Sqrt(var(x)) = 1
 print("Standard deviation of x:", stdev(dist))
 
 # Part B
@@ -83,7 +83,10 @@ print("Standard deviation of x:", stdev(dist))
 # 4λ
 
 # Variance:
-# ((1-λ)^4-4λ)^2 + (4λ(1-λ)^3-4λ)^2 + (6λ^2(1-λ)^2-4λ)^2 + (4λ^3(1-λ)-4λ)^2 + (λ^4-4λ)^2
+# (1-λ)^4 * (0-4λ)^2 + 4λ(1-λ)^3 * (1-4λ)^2 + 6λ^2(1-λ)^2 * (2-4λ)^2 + 4λ^3(1-λ) * (3 - 4λ)^2 + λ^4 * (4 - 4λ)^2
+# According to symbolab
+# = 4λ(1 - λ)
+
 
 # Standard Deviation (square root of the variance):
-# sqrt(((1-λ)^4-4λ)^2 + (4λ(1-λ)^3-4λ)^2 + (6λ^2(1-λ)^2-4λ)^2 + (4λ^3(1-λ)-4λ)^2 + (λ^4-4λ)^2)
+# sqrt(4λ(1 - λ))
