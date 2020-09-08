@@ -1,0 +1,94 @@
+Problem 39-3
+
+Part A:
+
+1.
+In assignment 38 problem 3, we proved that k in a uniform distribution is equal to
+k = 1/(b-a)
+And the expected value is equal to:
+E[X] = (a+b)/2
+Arrival time = 8:00 + 20 min bus ride + expected lateness of bus
+             = 8:00 + 20 + (0+15)/2 mins
+             = 8:27 + 30 seconds
+
+2.
+Arrival time = 8:05 + 20 mins + expected lateness of bus
+             = 8:05 + 20 + (0+10)/2
+             = 8:30
+
+3.
+In assignment 38 problem 3, we proved the cumulative distribution function for uniform distribution
+8:00 + 20 + x < 8:30
+x < 10
+a = 0, b = 15
+
+Since a <= x <= b, we have:
+
+(x-a)/(b-a)
+= (10 - 0)/(15 - 0)
+= 66.667%
+
+4.
+8:05 + 20 + x < 8:30
+x < 5
+
+(x-a)/(b-a)
+= (5 - 0)/(10 - 0)
+= 50%
+
+===============================
+Part B:
+
+1.
+In assignment 36 problem 1, we proved the expected value and cumulative distribution for an exponential function
+
+ke^(-kx) (where k is lambda)
+
+Expected value = 1/k = 1/10 (since k = 10)
+
+I expect it to take 0.1 seconds to come out of the wormhole
+
+
+2.
+Cumulative distribution for the exponential function is:
+P(X > 60) = 1 - P(X <= 60)
+
+1 - (1 - 1/e^λX) = e^(-λx)
+
+= e^(-10*60) = 3.97 * 10^-31 (pretty much 0%)
+
+3.
+.9999 = 1 - e^(-10*X)
+
+e^(-10X) = 0.0001
+
+-10X = ln 0.0001
+
+X = -ln(0.0001)/10
+
+ ~= 0.6908
+
+4.
+
+P(X > 1 day) = 1 - P(X <= 1 day)
+x = 1 - (1 - e^(-10* (24 hrs * 60 mins * 60 sec)))
+  = e^(-864000)
+
+5.
+The amount of seconds in a week is: 7 days * 24 hrs * 60 mins * 60 secs = 604800
+
+The probability you will be stuck for over a week is:
+
+P(X > 1 week) = 1 - P(X <= 1 week)
+1 - (1 - e^(-10 * 604800)) = e^(-6048000)
+
+If you use the wormhole twice a day for your entire life, assuming you live 79 years (avg human lifespan), here is the amount of times you use it:
+
+79 years * 365 days * 2 times/day = 57670 times in your life
+
+57670 * e^(-6048000) ~= 0
+
+The chance is so astronomically low that both me and Riley can't find a singular calculator to even represent the chance of staying
+ in for over a week in scientific notation. Multiplying this by the amount of times you go in your life will show how many times you will
+ be stuck for over a week. Multiplying gets 0, though. This means the fear of being stuck for a long time isn't reasonable, because of
+ the teensy chance.

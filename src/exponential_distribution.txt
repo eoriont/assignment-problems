@@ -92,8 +92,8 @@ Var(x) = E((X-1/λ)^2)
 
 = Int(x*0) from -infinity to 0 + Int((x-1/λ)^2 * λe^(-λx)) from x=0 to x=infinity
 
-= 0 + -e^(-λx)/λ^2 * ((x-1)^2 + 2/λ(x-1) + 2x/λ^2 + 2/λ^3) from x=0 to x=infinity
+= 0 + -1/λ^2(λ^2x^λ+1)e^(-λx) from x=0 to x=infinity
 
-= lim x->infinity (-e^(-λx)/λ^2 * ((x-1)^2 + 2/λ(x-1) + 2x/λ^2 + 2/λ^3)) - -(1/λ^2(1-2/λ+2/λ^3))
+= lim x->infinity (-1/λ^2(λ^2x^λ+1)e^(-λx)) - lim x-> 0(-1/λ^2(λ^2x^λ+1)e^(-λx))
 
-= 0 + (1/λ^3 + 4/λ^2) = 1/λ^3 + 4/λ^2
+= 1/λ^2
