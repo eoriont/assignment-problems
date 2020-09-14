@@ -1,0 +1,50 @@
+Problem 41-1
+
+1)
+L(k|{1, 17, 8, 25, 3})
+  = P(1)P(17)P(8)P(25)P(3)
+  = 1/k^5
+
+k can't be below the highest value of the set, so k > 25
+This leaves us with:
+
+L(k|x) = { 1/k^5 if k > 25
+         { 0     otherwise
+
+2)
+Sum(c * L(k|{1, 17, 8, 25, 3}))
+  = Sum(c/k^5) from 1 -> inf
+  = c Sum(1/k^5) from 1 -> inf
+  = 1
+
+In the python file, c approaches ~1443199.783
+
+3)
+p(k) = 1443199.783/k^5
+
+dp/dk = -7215998.915/k^6
+    0 = -7215998.915/k^6
+
+Not solvable, so most likely value of k is the lower end of the interval, 25
+it is the lower end of the interval because the derivative is decreasing, meaning the most likely value is the leftmost x value.
+
+4)
+1443199.783/x^5, x = 25
+
+1443199.783/25^5
+
+= 0.148
+
+it is 14.8% likely that 25 is the upper bound
+
+5)
+
+Sum(p(k)) for 25 <= k <= 30
+
+According to the python file, it is 58.34% likely that k is less than 30
+
+6)
+
+.95 = sum(p(k)) for 25 <= k
+
+According to problem 6 in the python file, we can be 95.25% sure that k is below 53.

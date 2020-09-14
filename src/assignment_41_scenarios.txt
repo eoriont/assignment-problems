@@ -1,0 +1,23 @@
+Problem 41-3
+
+A)
+
+You are driving a car for the first time.
+You (wrongly) assume that the car can only go so fast, so you imagine a sigmoid as the gas pedal down % (x) to mph (y)
+You go onto the freeway, and assume the capacity of the sigmoid is 65mph, so you hit the pedal to the metal.
+Little do you know, instead of a 1999 used toyota corolla, you are actually driving a brand new 2020 Bugatti Chiron!
+You accelerate into light speed, ripping the fabric of time open, creating a rift.
+This immediatly creates a black hole and the entire world gets swallowed up.
+If only you knew that the pedal down % to mph was linear...
+
+B)
+
+Imagine you are mining an astroid.
+You have a droneship with only so much power, and you want to maximize the amount of platinum you extract from it.
+You (wrongly) assume that the more you mine from the astroid, the more ore you will get from it.
+While this is partly true, there is only so much ore on the astroid.
+You begin mining, and base your completion on how much ore you have.
+In reality, the ore plateaus off because there isn't much more ore in the astroid, but you keep mining to follow your prediction.
+Eventually, you are barely getting any more ore, but you burnt through the majority of your battery.
+Now, you can't retrieve your droneship from the astroid because it doesn't have enough power to fly!
+You lose millions, possibly billions of dollars trying to mine the astroid but you end up losing your ship like someone who didn't take machine learning!
