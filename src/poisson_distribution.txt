@@ -1,0 +1,128 @@
+Problem 42-1
+
+A)
+1)
+
+Since this is a discrete distribution, we must use an infinite sum. We have
+
+1 = sum(2^n * e^-2 / n!) from n=0 -> infinity
+  = e^-2 sum(2^n / n!) from n=0 -> infinity
+Now, using the fact that e^z = sum(z^n/n!)
+  = e^-2 * e^2
+  = 1
+
+2)
+P(10 < X <= 12)
+X E {11, 12}
+
+2^11 * e^-2 / 11! + 2^12 * e^-2 / 12
+
+= e^-2 * (2^11/11! + 2^12/12!)
+
+3)
+E[X] = sum(n*2^n * e^-2 / n!) from n= 0 -> infinity
+
+The first (0th) term of the sum is 0 since it is multiplied by n, so simplify:
+
+     = e^-2 sum(2^n/(n-1)!) from n= 1 -> infinity
+
+     = 2e^-2 sum(2^(n-1)/(n-1)!) from n= 1 -> infinity
+
+Start back at 0 to get rid of (n-1)'s
+
+     = 2e^-2 sum(2^n/n!) from n= 0 -> infinity
+
+Now, using the fact that e^z = sum(z^n/n!)
+
+     = 2e^-2 * e^2
+
+     = 2
+
+4)
+Var[X] = sum((n-2)^2e^-2 2^n/n!) from n= 0 -> infinity
+
+       = e^-2 sum((n-2)^2 2^n/n!) from n= 0 -> infinity
+
+       = e^-2 sum((n^2 2^n/n!) + (-4n 2^n/n!) + (4*2^n/n!)) from n= 0 -> infinity
+
+       = e^-2 sum((n 2^n/(n-1)!) + (-4*2^n/(n-1)!) + (4*2^n/n!))
+
+       = e^-2 sum(((n-1)2^n/(n-1)!) + (-3*2^n/(n-1)!)) + sum(4*2^n/n!))
+
+       = e^-2 (sum((2^n/(n-2)!)) + -3 sum(2^n/(n-1)!) + 4e^2)
+Now, take the middle term right here ^^^^^^^^^, what is that equal to?
+   -3 sum(n2^n/n!) from 0 -> infinity
+Notice the 0th term is 0, so we can simplify to
+ = -3 sum(n2^n/n!) from 1 -> infinity
+ = -6 sum(2^(n-1)/(n-1)!) from 1 -> infinity
+ = -6 sum(2^n/n!) from 0 -> infinity
+ = -6 e^2
+
+Now we have
+= e^-2 (sum((n(n-1)2^n/n!)) + -6e^2 + 4e^2)
+Let's solve ^^^^^^^^^^ this term Now
+
+we have sum((n(n-1)2^n/n!)) from 0 -> infinity
+We can simplify this because at both n=0 and 1, the value is 0
+Therefore, it is the same thing as starting at n=2
+
+sum(n(n-1)2^n/n!) from 2 -> infinity
+= sum(2^n/(n-2)!) from 2 -> infinity
+= 4 sum(2^(n-2)/(n-2)! from 2 -> infinity
+= 4 sum(2^n/n!) from 0 -> infinity
+= 4 e^2
+
+Now we have
+= e^-2 (4e^2 + -6e^2 + 4e^2)
+= 2
+
+=======================================
+PART B:
+
+1)
+(I will be using k as lamda because I don't want to copy + paste it everywhere)
+
+(This problem uses all the same logic as A1)
+1 = sum(k^n * e^-k / n!) from n=0 -> infinity
+  = e^-k sum(k^n / n!) from n=0 -> infinity
+  = e^-k * e^k
+  = 1
+
+2)
+P(10 < X <= 12)
+X E {11, 12}
+k^11 * e^-k / 11! + k^12 * e^-k / 12
+= e^-k * (k^11/11! + k^12/12!)
+
+3)
+(This problem uses all the same logic as A3)
+E[X] = sum(n*k^n * e^-k / n!) from n= 0 -> infinity
+     = e^-k sum(k^n/(n-1)!) from n= 1 -> infinity
+     = ke^-k sum(k^(n-1)/(n-1)!) from n= 1 -> infinity
+     = ke^-k sum(k^n/n!) from n= 0 -> infinity
+     = ke^-k * e^k
+     = k
+
+4)
+(This problem uses all the same logic as A4)
+Var[X] = sum((n-k)^ke^-k k^n/n!) from n= 0 -> infinity
+       = e^-k sum((n-k)^k k^n/n!) from n= 0 -> infinity
+       = e^-k sum((n^2 k^n/n!) + (-2kn k^n/n!) + (kk*k^n/n!)) from n= 0 -> infinity
+       = e^-k sum((n^2 k^n/n!) + (-2kn*k^n/n!) + (kk*k^n/n!))
+       = e^-k sum((n(n-1)k^n/n!) + (-(2k-1)n*k^n/n!)) + sum(kk*k^n/n!))
+       = e^-k (sum(n(n-1)k^n/n!) + -(2k-1)n*sum(k^n/n!) + k^2e^2)
+middle term = -(2k+1) sum(nk^n/n!) from 0 -> infinity
+            = -(2k+1) sum(nk^n/n!) from 1 -> infinity
+            = -k(2k+1) sum(k^(n-1)/(n-1)!) from 1 -> infinity
+            = -k(2k+1) sum(k^n/n!) from 0 -> infinity
+            = -k(2k+1) e^k
+Var[X] = e^-2 (sum((n(n-1)k^n/n!)) + -k(2k11)e^2 + k^2e^2)
+first term = sum((n(n-1)k^n/n!)) from 0 -> infinity
+           = sum(n(n-1)k^n/n!) from 2 -> infinity
+           = sum(k^n/(n-2)!) from 2 -> infinity
+           = kk sum(k^(n-2)/(n-2)! from 2 -> infinity
+           = kk sum(k^n/n!) from 0 -> infinity
+           = kk e^k
+Var[X] = e^-k (kke^k + -k(2k-1)e^k + kke^k)
+= 2k^2 -k(2k-1)
+= k
