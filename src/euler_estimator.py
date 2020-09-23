@@ -37,5 +37,5 @@ class EulerEstimator:
             self.go_to_input(x, step_size)
             y_data.append(self.point[1])
 
-        print(min(y_data))        plt.plot(x_data, y_data, zorder=1)
+        plt.plot(x_data, y_data, zorder=1)
         plt.savefig(filename)
