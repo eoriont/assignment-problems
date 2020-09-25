@@ -48,3 +48,5 @@ euler.go_to_input(5, step_size=2)
 
 do_assert("go to input", euler.point[1],
           (10.88, 1.09, -9.58))
+
+euler.plot([-5, 5], step_size=0.1, filename='plot.png')
