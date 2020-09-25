@@ -2,18 +2,19 @@ import matplotlib.pyplot as plt
 
 
 class EulerEstimator:
-    def __init__(self, derivative, point):
+    def __init__(self, derivatives, point):
         self.point = point
-        self.derivative = derivative
+        self.derivatives = derivatives
 
     def calc_derivative_at_point(self):
-        return self.derivative(self.point[0])
+        return list(d(*self.point) for d in self.derivatives)
 
     def step_forward(self, step_size):
-        x = round(self.point[0]+step_size, 10)
-        y = round(self.point[1] + step_size *
-                  self.calc_derivative_at_point(), 10)
-        self.point = x, y
+        t = round(self.point[0]+step_size, 10)
+        dx = self.calc_derivative_at_point()
+        x = tuple(round(x_val + step_size*d, 10)
+                  for x_val, d in zip(self.point[1], dx))
+        self.point = t, x
 
     def go_to_input(self, x_val, step_size):
         if x_val < self.point[0]:
@@ -37,5 +38,7 @@ class EulerEstimator:
             self.go_to_input(x, step_size)
             y_data.append(self.point[1])
 
-        plt.plot(x_data, y_data, zorder=1)
+        for y_vals in y_data:
+            plt.plot(x_data, y_vals, zorder=1)
+
         plt.savefig(filename)

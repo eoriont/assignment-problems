@@ -6,49 +6,45 @@ def _round(t):
     return tuple(round(x, 5) for x in t)
 
 
-euler = EulerEstimator(derivative=(lambda x: x+1),
-                       point=(1, 4))
+euler = EulerEstimator(
+    derivatives=[
+        (lambda t, x: x[0] + 1),
+        (lambda t, x: x[0] + x[1]),
+        (lambda t, x: 2*x[1])
+    ],
+    point=(0, (0, 0, 0))
+)
 
-do_assert("euler point", euler.point,
-          (1, 4))
-do_assert("calc derivative", euler.calc_derivative_at_point(), 2)
-# 2     (because the derivative is f'(x)=x+1, so f'(1)=2)
+do_assert("point", euler.point,
+          (0, (0, 0, 0)))
+do_assert("calc derivative", euler.calc_derivative_at_point(),
+          [1, 0, 0])
 
 euler.step_forward(0.1)
-do_assert("euler point after step forward", euler.point,
-          (1.1, 4.2))  # (because 4 + 0.1*2=4.2)
+do_assert("step forward", euler.point,
+          (0.1, (0.1, 0, 0)))
 
-do_assert("derivative after step", euler.calc_derivative_at_point(),
-          2.1)
+do_assert("new derivative", euler.calc_derivative_at_point(),
+          [1.1, 0.1, 0])
 euler.step_forward(-0.5)
-do_assert("step forward point 2", _round(euler.point),
-          (0.6, 3.15))  # (because 4.2 + -0.5*2.1=3.15)
+do_assert("step forward 2", euler.point,
+          (-0.4, (-0.45, -0.05, 0)))
 
-euler.go_to_input(3, step_size=0.5)
+euler.go_to_input(5, step_size=2)
 
-# note: you should move to the x-coordinate of 3
-# using a step_size of 0.5, until the final step,
-# in which you need to reduce the step_size to hit 3
+# notes to help you debug:
 
-# the following is provided to help you debug:
+# point: (-0.4, (-0.45, -0.05, 0))
+# derivative: (0.55, -0.5, -0.1)
+# deltas: (2, (1.1, -1, -0.2))
 
-# point, derivative, deltas
-# (0.6, 3.15), 1.6, (0.5, 0.8)
-# (1.1, 3.95), 2.1, (0.5, 1.05)
-# (1.6, 5), 2.6, (0.5, 1.3)
-# (2.1, 6.3), 3.1, (0.5, 1.55)
-# (2.6, 7.85), 3.6, (0.4, 1.44)
+# point: (1.6, (0.65, -1.05, -0.2))
+# derivative: (1.65, -0.4, -2.1)
+# deltas: (2, (3.3, -0.8, 4.2))
 
-do_assert("euler point after go_to_input", _round(euler.point),
-          (3, 9.29))
+# point: (3.6, (3.95, -1.85, 4))
+# derivative: (4.95, 2.1, -3.7)
+# deltas: (1.4, (9.8, 4.2, -7.4))
 
-euler = EulerEstimator(derivative=(lambda x: x+1),
-                       point=(1, 4))
-
-euler.plot([-5, 5], step_size=0.1, filename='plot.png')
-
-# generates a plot of the function for x-values in the
-# interval [-5,5] separated by a length of step_size
-
-# for this example, the plot should look like the parabola
-# y = 0.5x^2 + x + 2.5
+do_assert("go to input", euler.point[1],
+          (10.88, 1.09, -9.58))
