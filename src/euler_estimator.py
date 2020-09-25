@@ -27,7 +27,6 @@ class EulerEstimator:
     def plot(self, r, step_size, filename):
         x_data = [round(r[0]+i*step_size, 10)
                   for i in range(int((r[1]-r[0])/step_size)+1)]
-        print(x_data)
         given_index = x_data.index(self.point[0])
         given_point = self.point
         y_data = []
@@ -38,8 +37,6 @@ class EulerEstimator:
         for x in x_data[given_index:]:
             self.go_to_input(x, step_size)
             y_data.append(self.point[1])
-
-        y_data.reverse()
 
         for y_vals in zip(*y_data):
             plt.plot(x_data, y_vals, zorder=1)
