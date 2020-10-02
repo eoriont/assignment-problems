@@ -56,11 +56,7 @@ while None in square or not is_valid(arr_to_square(square)):
     if square.count(square[index]) > 1:
         continue
     if is_valid(arr_to_square(square)):
-        if square[index] == 10:
-            square[index] = None
-            continue
-        else:
-            index += 1
+        index += 1
 
 
 print(arr_to_square(square))
