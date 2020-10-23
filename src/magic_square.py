@@ -4,8 +4,8 @@ def arr_to_square(arr):
 
 
 def is_valid(s, n):
-    vals = [s for s in sum(s, []) if s is not None]
-    if len(set(vals)) != len(vals):
+    vals = [i for r in s for i in r if i]
+    if len(set(vals)) < len(vals):
         return False
     arrs = s \
         + [list(arr) for arr in zip(*s)] \
@@ -15,7 +15,7 @@ def is_valid(s, n):
 
 
 def get_magic_const(n):
-    return n**2*(n**2+1)/2
+    return n*(n**2+1)/2
 
 
 arr1 = [[1, 2, None],
@@ -46,13 +46,13 @@ print(is_valid(arr4, 15))
 
 def gen_magic_square(size):
     num = get_magic_const(size)
-    square = [None for i in range(9)]
+    square = [None for i in range(size**2)]
     index = 0
     while None in square or not is_valid(arr_to_square(square), num):
         if square[index] == None:
             square[index] = 0
         square[index] += 1
-        if square[index] >= 10:
+        if square[index] >= len(square)+1:
             square[index] = None
             index -= 1
             continue
@@ -60,6 +60,8 @@ def gen_magic_square(size):
             continue
         if is_valid(arr_to_square(square), num):
             index += 1
+    return arr_to_square(square)
 
 
-# print(arr_to_square(square))
+# print(arr_to_square([0, 0, 0, 0, 0, 0, 0, 0, 0]))
+print(gen_magic_square(4))
