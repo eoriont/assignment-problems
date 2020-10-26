@@ -1,6 +1,7 @@
 
 def arr_to_square(arr):
-    return [arr[i:i+3] for i in range(0, 9, 3)]
+    s = int(len(arr) ** 0.5)
+    return [arr[i:i+s] for i in range(0, len(arr), s)]
 
 
 def is_valid(s, n):
@@ -52,11 +53,11 @@ def gen_magic_square(size):
         if square[index] == None:
             square[index] = 0
         square[index] += 1
+        if square.count(square[index]) > 1:
+            continue
         if square[index] >= len(square)+1:
             square[index] = None
             index -= 1
-            continue
-        if square.count(square[index]) > 1:
             continue
         if is_valid(arr_to_square(square), num):
             index += 1
