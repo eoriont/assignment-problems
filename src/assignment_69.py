@@ -2,16 +2,6 @@ def arr_to_square(arr):
     return [arr[i:i+6] for i in range(0, len(arr), 6)]
 
 
-# def is_valid(s, n):
-#     vals = [i for r in s for i in r if i]
-#     if len(set(vals)) < len(vals):
-#         return False
-#     arrs = s \
-#         + [list(arr) for arr in zip(*s)] \
-#         + [[s[i][i] for i in range(len(s))],
-#            [s[i][len(s)-i-1] for i in range(len(s))]]
-#     return all(sum(r) == n for r in arrs if None not in r)
-
 def chunks(lst, n):
     for i in range(0, len(lst), n):
         yield sum(lst[i:i + n], [])
