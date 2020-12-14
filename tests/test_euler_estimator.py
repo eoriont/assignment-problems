@@ -1,5 +1,10 @@
-from euler_estimator import EulerEstimator
-from otest import do_assert, cstring
+import sys
+sys.path.append("src")
+try:
+    from otest import do_assert, cstring
+    from euler_estimator import EulerEstimator
+except ImportError as e:
+    print(e)
 
 
 def _round(t):
