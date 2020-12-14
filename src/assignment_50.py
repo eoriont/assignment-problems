@@ -1,10 +1,10 @@
 from euler_estimator import EulerEstimator
-derivatives = [
-    (lambda t, x: -0.0003*x[0]*x[1]),
-    (lambda t, x: 0.0003*x[0]*x[1] - 0.02*x[1]),
-    (lambda t, x: 0.02*x[1])
-]
-starting_point = (0, (1000, 1, 0))
+derivatives = {
+    'susceptible': (lambda t, x: -0.0003*x['susceptible']*x['infected']),
+    'infected': (lambda t, x: 0.0003*x['susceptible']*x['infected'] - 0.02*x['infected']),
+    'recovered': (lambda t, x: 0.02*x['infected'])
+}
+starting_point = (0, {'susceptible': 1000, 'infected': 1, 'recovered': 0})
 
 estimator = EulerEstimator(derivatives, starting_point)
 

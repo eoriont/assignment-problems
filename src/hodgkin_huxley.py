@@ -16,17 +16,10 @@ class Neuron:
                             filename=filename)
 
     def get_starting_point(self):
-        # h(0)
         x = 0.07 * (math.e**3 + 1)
         h_0 = x/(x+1)
-
-        # n(0)
         n_0 = 1/(1.25*(math.e-1)+1)
-
-        # m(0)
         m_0 = 2.5/(2.5+4*(math.e**2.5 - 1))
-
-        # V(0)
         V_0 = 0
         return 0, (V_0, n_0, m_0, h_0)
 

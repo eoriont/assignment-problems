@@ -1,5 +1,5 @@
 from euler_estimator import EulerEstimator
-from otest import do_assert
+from otest import do_assert, cstring
 
 
 def _round(t):
@@ -7,28 +7,28 @@ def _round(t):
 
 
 euler = EulerEstimator(
-    derivatives=[
-        (lambda t, x: x[0] + 1),
-        (lambda t, x: x[0] + x[1]),
-        (lambda t, x: 2*x[1])
-    ],
-    point=(0, (0, 0, 0))
+    derivatives={
+        '1': (lambda t, x: x['1'] + 1),
+        '2': (lambda t, x: x['1'] + x['2']),
+        '3': (lambda t, x: 2*x['2'])
+    },
+    point=(0, {'1': 0, '2': 0, '3': 0})
 )
 
 do_assert("point", euler.point,
-          (0, (0, 0, 0)))
+          (0, {'1': 0, '2': 0, '3': 0}))
 do_assert("calc derivative", euler.calc_derivative_at_point(),
-          [1, 0, 0])
+          {'1': 1, '2': 0, '3': 0})
 
 euler.step_forward(0.1)
 do_assert("step forward", euler.point,
-          (0.1, (0.1, 0, 0)))
+          (0.1, {'1': 0.1, '2': 0, '3': 0}))
 
 do_assert("new derivative", euler.calc_derivative_at_point(),
-          [1.1, 0.1, 0])
+          {'1': 1.1, '2': 0.1, '3': 0})
 euler.step_forward(-0.5)
 do_assert("step forward 2", euler.point,
-          (-0.4, (-0.45, -0.05, 0)))
+          (-0.4, {'1': -0.45, '2': -0.05, '3': 0}))
 
 euler.go_to_input(5, step_size=2)
 
@@ -47,6 +47,8 @@ euler.go_to_input(5, step_size=2)
 # deltas: (1.4, (9.8, 4.2, -7.4))
 
 do_assert("go to input", euler.point[1],
-          (10.88, 1.09, -9.58))
+          {'1': 10.88, '2': 1.09, '3': -9.58})
 
 euler.plot([-5, 5], step_size=0.1, filename='plot.png')
+
+print(cstring("&6All Tests Passed!"))

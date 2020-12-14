@@ -7,13 +7,13 @@ class EulerEstimator:
         self.derivatives = derivatives
 
     def calc_derivative_at_point(self):
-        return list(d(*self.point) for d in self.derivatives)
+        return {k: d(*self.point) for k, d in self.derivatives.items()}
 
     def step_forward(self, step_size):
         t = round(self.point[0]+step_size, 10)
         dx = self.calc_derivative_at_point()
-        x = tuple(round(x_val + step_size*d, 10)
-                  for x_val, d in zip(self.point[1], dx))
+        x = {k: round(x_val + step_size*dx[k], 10)
+             for k, x_val in self.point[1].items()}
         self.point = t, x
 
     def go_to_input(self, x_val, step_size):
@@ -32,11 +32,11 @@ class EulerEstimator:
         y_data = []
         for x in x_data[:given_index][::-1]:
             self.go_to_input(x, step_size)
-            y_data.insert(0, self.point[1])
+            y_data.insert(0, self.point[1].values())
         self.point = given_point
         for x in x_data[given_index:]:
             self.go_to_input(x, step_size)
-            y_data.append(self.point[1])
+            y_data.append(self.point[1].values())
 
         for y_vals in zip(*y_data):
             plt.plot(x_data, y_vals, zorder=1)
