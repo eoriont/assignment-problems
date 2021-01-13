@@ -33,8 +33,7 @@ y_data = [
      for n in range(1, 101)],
     [calc_standard_normal_probability(
         0, 1, n, "trapezoidal") for n in range(1, 101)],
-    [calc_standard_normal_probability(0, 1, n, "simpson")
-     for n in range(1, 101)],
+
 ]
 x_vals = [i for i in range(1, 101)]
 
@@ -43,4 +42,6 @@ colors = ["red", "orange", "black", "green", "blue"]
 for y_vals, col in zip(y_data, colors):
     plt.plot(x_vals, y_vals, zorder=1, color=col)
 
+plt.plot(range(1, 101, 2), [calc_standard_normal_probability(0, 1, n, "simpson")
+                            for n in range(1, 101, 2)], color=colors[-1])
 plt.show()
