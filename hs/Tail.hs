@@ -1,5 +1,5 @@
 tail' :: (Num a, Ord a) => a -> [a] -> [a]
-tail' n x = reverseList (take' n (reverseList x))
+tail' n = reverseList . take' n . reverseList
 
 reverseList :: [a] -> [a]
 reverseList [] = []
@@ -11,4 +11,6 @@ take' n _
 take' _ [] = []
 take' n (x : xs) = x : take' (n -1) xs
 
-main = print (tail' 4 [8, 3, -1, 2, -5, 7])
+arr = [8, 3, -1, 2, -5, 7]
+
+main = print . tail' 4 $ arr
