@@ -2,8 +2,12 @@ import random
 
 
 def show_board(locs):
-    print(''.join('  '.join((str(locs.index((x, y))) if (x, y) in locations else ".")
-                            for y in range(8)) + "\n" for x in range(8)))
+    print(''.join(
+        '  '.join(
+            str(locs.index((x, y))) if (x, y) in locations else "."
+                for y in range(8)) + "\n" for x in range(8)
+        )
+    )
 
 
 def calc_cost(locs):
