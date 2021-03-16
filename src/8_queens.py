@@ -21,7 +21,6 @@ def calc_cost(locs):
                     cost.append((i, j))
     return len(cost)
 
-
 def random_optimizer(n):
     locs = [random.sample([(x, y) for x in range(8)
                            for y in range(8)], 8) for _ in range(n)]
@@ -30,11 +29,6 @@ def random_optimizer(n):
         'locations': optimized,
         'cost': calc_cost(optimized)
     }
-
-
-def is_in_bounds(pos):
-    return 0 <= pos.x <= 7 and 0 <= pos.y <= 7
-
 
 def steepest_descent_optimizer(n):
     optimized = {'cost': 1000}
